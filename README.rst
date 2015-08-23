@@ -1,5 +1,5 @@
 =========================
-akka clustering PoC nodes
+akka clustering PoC notes
 =========================
 
 PoC abstract
