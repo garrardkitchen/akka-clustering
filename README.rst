@@ -5,9 +5,11 @@ akka clustering PoC notes
 PoC abstract
 ============
 
-I want to test the exchange of messages between distributed nodes where the actor being requests is not part of a shared namespace.  Why is this so important?
-Let's take the following scenario.  I have a product, currently being broken down into microservices.  I have a one web app that needs to talk to another, .  This is straight forward enough if the actors are accessible via a share namespace.
-What if one of these actors, the receiver for instance, uses an esoteric implementation that cannot be shared across applications because it is particular to that web app?  This is what this tests; calling out to an actor, on 1 or more nodes in the cluster, that only exists on those nodes.
+I want to test the exchange of messages between distributed nodes where the actor being requested is not part of a shared namespace.  Why is this so important?
+Let's take the following scenario:
+
+    I have a product, currently being broken down into microservices.  I have a one web app that needs to talk to another.  This is straight forward enough when the actors are accessible via a share namespace.
+    However, what if one of these actors, the receiver for instance, uses an esoteric implementation that cannot be shared across mutliple applications because it is particular to that one web app?  This is what this tests; calling out to an actor, on 1 or more nodes in the cluster, that only exists on those nodes and nowhere else.
 
 
 Nodes
