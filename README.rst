@@ -13,9 +13,9 @@ What if one of these actors, the receiver for instance, uses an esoteric impleme
 Nodes
 =====
 
-    1 seed -> seed proj
-    2 worker nodes -> node1, node2
-    1 Shared -> message
+1 seed -> seed proj
+2 worker nodes -> node1, node2
+1 Shared -> message
 
 Seed node
 ---------
@@ -52,7 +52,7 @@ Working off of port 9001
 2 worker nodes
 --------------
 
-``node1`` is the transmitter node. ``node2`` x ? are the consumer nodes.  Both of these worker nodes connect to the seed node.
+``node1`` is the transmitter node. ``node2`` x ? are the consumer nodes.  Both of these worker nodes connect to the seed node. ``node2`` has actor ``EventActor``.
 
 **node1 akka hocon:** ::
 
