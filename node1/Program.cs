@@ -25,24 +25,58 @@ namespace node1
             var start = _actorSystem.ActorOf(Props.Create<StartActor>(actor), "start");
             
             var counter = 0;
-            Console.WriteLine("Press ESC to stop");
+
+            Console.WriteLine("Node 1 started...");
+            Console.WriteLine("Press [ESC] to stop, [L] 1k messages, [H] for 10k, [M] for 100k or any other key to send a single message");
             while (true)
             {
-                counter++;
                 ConsoleKeyInfo result = Console.ReadKey();
                 if (result.Key == ConsoleKey.Escape)
                 {
                     break;
                 }
-               
-                    Console.WriteLine("Sending...");
 
-                start.Tell(new AuditMessage("Hi - " + counter.ToString()));
+                switch (result.Key)
+                {
+                    case ConsoleKey.L:
+                    {
+                        counter = TransmitMessageManyTimes(counter, start, 1000);
+                        break;
+                    }
+                    case ConsoleKey.H:
+                    {
+                        counter = TransmitMessageManyTimes(counter, start, 10000);
+                        break;
+                    }
+                    case ConsoleKey.M:
+                    {
+                        counter = TransmitMessageManyTimes(counter, start, 100000);
+                        break;
+                    }
+                    default:
+                    {
+                        counter = TransmitMessageManyTimes(counter, start, 1);
+                        break;
+                    }
+                }
+
+                
                 //actor.Tell(new AuditMessage("Hi - " + counter.ToString()));
-               
             }
 
             Console.ReadKey();
+        }
+
+        private static int TransmitMessageManyTimes(int counter, IActorRef start, int amount)
+        {
+            Console.Write($"Transmitting {amount:##,###} message(s) -> ");
+            for (int i = 0; i < amount; i++)
+            {
+                counter++;
+                start.Tell(new AuditMessage("Message no. - " + counter.ToString()));
+            }
+            Console.WriteLine(" [x] <- Transmitted message(s)");
+            return counter;
         }
     }
 }

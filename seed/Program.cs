@@ -1,26 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace node2
+﻿namespace seed
 {
-    using System.Threading;
+    using System;
     using Akka.Actor;
-    using Akka.Routing;
-    
+
     class Program
     {
         public static ActorSystem _actorSystem;
-
-        public static IActorRef _event;
 
         static void Main(string[] args)
         {
             _actorSystem = ActorSystem.Create("coach");
             
-            Console.WriteLine("SEED waiting....");
+            Console.WriteLine("Seed node running....");
             Console.ReadKey();
         }
     }

@@ -6,16 +6,17 @@ namespace Shared
 
     public class Node2Actor : ReceiveActor
     {
+        private readonly string _machineName;
+        private readonly Guid _id;
 
-        //protected Akka.Cluster.Cluster Cluster = Akka.Cluster.Cluster.Get(Context.System);
-
-        public Node2Actor()
+        public Node2Actor(string machineName, Guid id)
         {
-            //var actor = Context.System.ActorSelection("/user/audit");
+            _machineName = machineName;
+            _id = id;
 
             Receive<AuditMessage>(s =>
             {
-                Console.WriteLine("Recevied! - " + s.Message);
+                Console.WriteLine($"machine: <{_machineName}> id: <{_id}> recevied message: <{s.Message}>");
             });
 
             Receive<Terminated>(t =>
@@ -23,35 +24,16 @@ namespace Shared
                 
             });
 
-            //Receive<ClusterEvent.MemberUp>(t =>
-            //{
-
-            //});
-
             ReceiveAny((e) =>
             {
                 
             });
         }
 
-
         protected override void PreRestart(Exception reason, object message)
         {
             base.PreRestart(reason, message);
             Self.Tell(message);
         }
-
-        //protected override void PreStart()
-        //{
-        //    // subscribe to IMemberEvent and UnreachableMember events
-        //    Cluster.Subscribe(Self, ClusterEvent.InitialStateAsEvents,
-        //        new[] { typeof(ClusterEvent.IMemberEvent), typeof(ClusterEvent.UnreachableMember) });
-        //}
-
-        //protected override void PostStop()
-        //{
-        //    Cluster.Unsubscribe(Self);
-        //}
-
     }
 }

@@ -74,7 +74,6 @@
   <ItemGroup>
     <Compile Include="AuditMessage.cs" />
     <Compile Include="StartActor.cs" />
-    <Compile Include="EventActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
