@@ -1,0 +1,7 @@
+*.dll
+bin/
+Debug/
+Release/
+*.pdb
+*.exe
+/packages
