@@ -14,7 +14,9 @@ Nodes
 =====
 
 1 seed -> seed proj
+
 2 worker nodes -> node1, node2
+
 1 Shared -> message
 
 Seed node
@@ -116,4 +118,4 @@ This library contains 1 Message - ``AuditMessage`` and 1 actor ``StartActor``.
 To run
 ======
 
-Start the ``seed`` and ``node1``.  then start up multiple ``node2``s.
+Start the ``seed`` and ``node1``.  then start up multiple ``node2`` s.
