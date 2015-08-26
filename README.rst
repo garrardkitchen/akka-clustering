@@ -130,7 +130,7 @@ Issues
 
 Errors are reported to the console rapidly when you key in ``M`` in the transmitter ``Node1`` console.  I was able to curtail these errors by applying the following change:
 
-**node1 > Program** ::
+**node1 > Program.cs** ::
 
     private static int TransmitMessageManyTimes(int counter, ActorSelection start, int amount)
     {
@@ -144,11 +144,7 @@ Errors are reported to the console rapidly when you key in ``M`` in the transmit
        return counter;
     }
 
-to
-
-.. code-block:: c#
-   :linenos:
-   :emphasize-lines: 7,8,9
+to ::
 
     private static int TransmitMessageManyTimes(int counter, ActorSelection start, int amount)
     {
