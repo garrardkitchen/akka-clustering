@@ -2,6 +2,14 @@
 akka clustering PoC notes
 =========================
 
+Sections:
+
+    `PoC abstract`_
+    `Cluster Nodes`_
+    `How to run`_
+    `Observations`_
+    `Deploying receiver on cloud platform`_
+
 PoC abstract
 ============
 
@@ -14,14 +22,13 @@ Let's take the following scenario:
 This is what this tests; calling out to an actor, on 1 or more nodes in the cluster, that only exists on those nodes and nowhere else.
 
 
-Nodes
-=====
+cluster Nodes
+=============
 
-1 seed -> seed proj
+- `Seed node`_ -> seed project
+- `Worker nodes`_ -> node1, node2 projects
 
-2 worker nodes -> node1, node2
-
-1 Shared -> message
+The `Shared`_ project contains the `AuditMessage` that is being passed between the `transmitter` and the `receiver` nodes.  This project also contains the `StartActor` and its supervisor, `StartSupervisorActor`.  I have included supervisor to manage the life cyle of the actors.
 
 Seed node
 ---------
@@ -55,8 +62,8 @@ Working off of port 9001
        }
      }
 
-2 worker nodes
---------------
+Worker nodes
+------------
 
 ``node1`` is the transmitter node. ``node2`` x ? are the consumer nodes.  Both of these worker nodes connect to the seed node. ``node2`` has actor ``EventActor``.
 
@@ -119,14 +126,14 @@ Shared
 
 This library contains 1 Message - ``AuditMessage`` and 1 actor ``StartActor``.
 
-To run
-======
+How to run
+==========
 
 Start the ``seed`` and ``node1``.  then start up multiple ``node2`` s.
 
 
-Issues
-======
+Observations
+============
 
 Errors are reported to the console rapidly when you key in ``M`` in the transmitter ``Node1`` console.  I was able to curtail these errors by applying the following change:
 
@@ -163,7 +170,7 @@ to ::
 My supposition here is that due to the weight of traffic, the actor never got the chance to respond to the seed node so it believe it was down and then took it out of circulation.  At least with the ``Ask`` implementation the receiver actor has to respond to the sender actor and therefore the seed acknowledges this and is satisfied that receiver node is still active. I however cannot confirm this.
 
 
-Deploying receiver on Cloud Platform
+Deploying receiver on cloud platform
 ====================================
 
 To run this on a VM on the Azure cloud platform please:
