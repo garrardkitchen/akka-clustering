@@ -2,13 +2,14 @@
 akka clustering PoC notes
 =========================
 
-Sections:
+Sections
+========
 
-    `PoC abstract`_
-    `Cluster Nodes`_
-    `How to run`_
-    `Observations`_
-    `Deploying receiver on cloud platform`_
+- `PoC abstract`_
+- `Cluster Nodes`_
+- `How to run`_
+- `Observations`_
+- `Deploying receiver on cloud platform`_
 
 PoC abstract
 ============
