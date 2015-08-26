@@ -168,7 +168,7 @@ to ::
        return counter;
     }
 
-My supposition here is that due to the weight of traffic, the actor never got the chance to respond to the seed node so it believe it was down and then took it out of circulation.  At least with the ``Ask`` implementation the receiver actor has to respond to the sender actor and therefore the seed acknowledges this and is satisfied that receiver node is still active. I however cannot confirm this.
+My supposition here is that due to the weight of traffic, the actor never got the chance to respond to the seed node so it believed it was down and which then resulted in it being taken it out of circulation.  At least with the ``Ask`` implementation, the receiver actor has to respond to the sender actor and which means the seed acknowledges this communication and is satisfied that the receiver node is still active. I however cannot confirm this.
 
 
 Deploying receiver on cloud platform
