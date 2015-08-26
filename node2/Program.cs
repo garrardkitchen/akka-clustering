@@ -24,9 +24,10 @@ namespace node2
 
             _machineName = Environment.MachineName;
             _actorSystem = ActorSystem.Create("coach");
-            _event = _actorSystem.ActorOf(Props.Create<Node2Actor>(_machineName, _id), eventPath);
+            //_event = _actorSystem.ActorOf(Props.Create<Node2Actor>(_machineName, _id), eventPath);
+            _actorSystem.ActorOf(Props.Create<EventSupervisor>(_machineName, _id, eventPath),"eventsupervisor");
 
-            Console.WriteLine($"Node 2 started receiving messages on on actor path: <{eventPath}> ");
+            Console.WriteLine($"Node 2 started receiving messages on on actor path: <{eventPath}> on machine: <{_machineName}>");
             
             Console.ReadKey();
         }
