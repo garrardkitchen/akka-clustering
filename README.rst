@@ -176,8 +176,8 @@ Deploying receiver on cloud platform
 
 To run this on a VM on the Azure cloud platform please:
 
-# apply the 3 IP addresses as prompted here in the curly brackets
-# add port rule 8080 [arbitary port value] via Azure portal [or from CLI/PS] & add rule to machine firewall.
+- apply the 3 IP addresses as prompted here in the curly brackets
+- add port rule 8080 [arbitary port value] via Azure portal [or from CLI/PS] & add rule to machine firewall.
 
 **node2 app.config** ::
 
